@@ -133,7 +133,7 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
+            <Capability>1</Capability>
             <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
@@ -427,7 +427,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Drivers/CMSISDevice/ST/STM32F1xx</GroupName>
+          <GroupName>Drivers/CMSIS/Device/ST/STM32F1xx</GroupName>
           <Files>
             <File>
               <FileName>startup_stm32f103c8t6.s</FileName>
