@@ -323,21 +323,21 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>0</wLevel>
             <uThumb>0</uThumb>
-            <uSurpInc>0</uSurpInc>
+            <uSurpInc>1</uSurpInc>
             <uC99>1</uC99>
             <uGnu>1</uGnu>
             <useXO>0</useXO>
             <v6Lang>5</v6Lang>
             <v6LangP>3</v6LangP>
-            <vShortEn>1</vShortEn>
-            <vShortWch>1</vShortWch>
+            <vShortEn>0</vShortEn>
+            <vShortWch>0</vShortWch>
             <v6Lto>0</v6Lto>
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
+              <MiscControls>-Wall -Wextra</MiscControls>
               <Define></Define>
               <Undefine></Undefine>
               <IncludePath>..\Application\Include;..\Drivers\BSP\Include;..\Drivers\CMSIS\Core\Include;..\Drivers\CMSIS\Device\ST\STM32F1xx\Include;..\Drivers\STM32F1xx_HAL_Driver\Include</IncludePath>
@@ -390,11 +390,6 @@
               <FilePath>..\Application\Source\main.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f1xx_assert.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Application\Source\stm32f1xx_assert.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f1xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Application\Source\stm32f1xx_hal_msp.c</FilePath>
@@ -409,20 +404,30 @@
               <FileType>1</FileType>
               <FilePath>..\Application\Source\swi2c.c</FilePath>
             </File>
-            <File>
-              <FileName>tim.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Application\Source\tim.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Drivers/BSP</GroupName>
           <Files>
             <File>
-              <FileName>board.c</FileName>
+              <FileName>bsp_assert.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\Drivers\BSP\Source\board.c</FilePath>
+              <FilePath>..\Drivers\BSP\Source\bsp_assert.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\Source\bsp_clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_error.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\Source\bsp_error.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_timer_delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\Source\bsp_timer_delay.c</FilePath>
             </File>
           </Files>
         </Group>

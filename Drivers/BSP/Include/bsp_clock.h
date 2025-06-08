@@ -1,6 +1,5 @@
 /*
  * SPDX-License-Identifier: BSD-3-Clause
- * Copyright (c) 2016 STMicroelectronics.
  * Copyright (c) 2025 Rainer Meng.
  * All rights reserved.
  *
@@ -34,13 +33,20 @@
  * If no LICENSE file comes with this software, it is provided AS-IS.
  */
 
-#include "stm32f1xx_assert.h"
-#include "main.h"
+#ifndef I2C_REGISTER_TOOLKIT_DRIVERS_BSP_INCLUDE_BSP_CLOCK_H_
+#define I2C_REGISTER_TOOLKIT_DRIVERS_BSP_INCLUDE_BSP_CLOCK_H_
 
-#ifdef USE_FULL_ASSERT
-void assert_failed(uint8_t *file, uint32_t line)
-{
-  UNUSED(file);
-  UNUSED(line);
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "stm32f1xx_hal.h"
+#include "bsp_error.h"
+
+void BSP_SetClockTree(void);
+
+#ifdef __cplusplus
 }
+#endif
+
 #endif

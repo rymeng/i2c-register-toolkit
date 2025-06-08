@@ -1,5 +1,6 @@
 /*
  * SPDX-License-Identifier: BSD-3-Clause
+ * Copyright (c) 2016 STMicroelectronics.
  * Copyright (c) 2025 Rainer Meng.
  * All rights reserved.
  *
@@ -33,73 +34,12 @@
  * If no LICENSE file comes with this software, it is provided AS-IS.
  */
 
-#ifndef I2C_REGISTER_TOOLKIT_APPLICATION_INCLUDE_SWI2C_H_
-#define I2C_REGISTER_TOOLKIT_APPLICATION_INCLUDE_SWI2C_H_
+#include "bsp_error.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "bsp_timer_delay.h"
-
-#define SWI2C_SCL_PORT  GPIOA
-#define SWI2C_SCL_PIN   GPIO_PIN_0
-#define SWI2C_SDA_PORT  GPIOA
-#define SWI2C_SDA_PIN   GPIO_PIN_1
-
-#define SWI2C_DELAY()   BSP_Delay5us()
-
-#ifndef SWI2C_IGNORE_SLAVE_ACK_MODE
-  #define SWI2C_IGNORE_SLAVE_ACK_MODE (0U)
-#endif
-
-typedef enum {
-  SWI2C_SUCCESS = 0,
-  SWI2C_ERROR = 1
-} SWI2C_StateTypeDef;
-
-typedef enum {
-  SWI2C_LL_LOW = 0,
-  SWI2C_LL_HIGH = 1
-} SWI2C_LLStateTypeDef;
-
-typedef enum {
-  SWI2C_ACK = 0,
-  SWI2C_NACK = 1
-} SWI2C_AckBitStateTypeDef;
-
-__STATIC_FORCEINLINE void SWI2C_SetPin(GPIO_TypeDef *GPIO, uint16_t GPIO_Pin)
+void BSP_Error_Handler(void)
 {
-  GPIO->BSRR = GPIO_Pin;
+  __disable_irq();
+  while (1) {
+    ;
+  }
 }
-
-__STATIC_FORCEINLINE void SWI2C_ResetPin(GPIO_TypeDef *GPIO, uint16_t GPIO_Pin)
-{
-  GPIO->BRR = GPIO_Pin;
-}
-
-__STATIC_FORCEINLINE SWI2C_LLStateTypeDef SWI2C_ReadPin(GPIO_TypeDef *GPIO, uint16_t GPIO_Pin)
-{
-  return (GPIO->IDR & GPIO_Pin) ? SWI2C_LL_HIGH : SWI2C_LL_LOW;
-}
-
-void SWI2C_Init(void);
-
-void SWI2C_Start(void);
-void SWI2C_Stop(void);
-
-SWI2C_AckBitStateTypeDef SWI2C_GetAckBit(void);
-void SWI2C_TransmitAckBit(void);
-void SWI2C_TransmitNAckBit(void);
-
-SWI2C_StateTypeDef SWI2C_TransmitBytes(const uint8_t *pdata, const uint32_t num);
-void SWI2C_ReceiveBytes(uint8_t *pdata, const uint32_t num);
-
-SWI2C_StateTypeDef SWI2C_Read(const uint8_t device_addr, const uint8_t data_start_addr, uint8_t *const pbuffer, const uint32_t num);
-SWI2C_StateTypeDef SWI2C_Write(const uint8_t device_addr, const uint8_t data_start_addr, const uint8_t *const pbuffer, const uint32_t num);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif

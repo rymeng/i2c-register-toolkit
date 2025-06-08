@@ -39,9 +39,9 @@
 int main(void)
 {
   HAL_Init();
-  BOARD_SetClockTree();
+  BSP_SetClockTree();
+  BSP_TIM_Delay5us_Init();
 
-  TIM_Init();
   SWI2C_Init();
 
  while (1)

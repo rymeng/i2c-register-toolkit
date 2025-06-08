@@ -44,10 +44,10 @@ extern "C" {
 #include "stm32f1xx_hal.h"
 
 // BSP
-#include "board.h"
-
-// Peripherals
-#include "tim.h"
+#include "bsp_error.h"
+#include "bsp_assert.h"
+#include "bsp_clock.h"
+#include "bsp_timer_delay.h"
 
 // Communication bus simulated by software controlled GPIO
 #include "swi2c.h"

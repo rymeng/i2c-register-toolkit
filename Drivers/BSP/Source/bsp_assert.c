@@ -1,5 +1,6 @@
 /*
  * SPDX-License-Identifier: BSD-3-Clause
+ * Copyright (c) 2016 STMicroelectronics.
  * Copyright (c) 2025 Rainer Meng.
  * All rights reserved.
  *
@@ -33,31 +34,12 @@
  * If no LICENSE file comes with this software, it is provided AS-IS.
  */
 
-#include "tim.h"
+#include "bsp_assert.h"
 
-TIM_HandleTypeDef htim2 = {0};
-
-void TIM_Init(void)
+#ifdef USE_FULL_ASSERT
+void assert_failed(uint8_t *file, uint32_t line)
 {
-  htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 0U;
-  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 0U;
-  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  HAL_TIM_Base_Init(&htim2);
+  (void)file;
+  (void)line;
 }
-
-void Delay5us(void)
-{
-  __HAL_TIM_SET_COUNTER(&htim2, 0U);
-  __HAL_TIM_SET_AUTORELOAD(&htim2, 100U - 1U);
-
-  HAL_TIM_Base_Start(&htim2);
-  while (!__HAL_TIM_GET_FLAG(&htim2, TIM_FLAG_UPDATE))
-  {
-    ;
-  }
-  __HAL_TIM_CLEAR_FLAG(&htim2, TIM_FLAG_UPDATE);
-  HAL_TIM_Base_Stop(&htim2);
-}
+#endif

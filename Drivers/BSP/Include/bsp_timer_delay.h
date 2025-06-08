@@ -33,19 +33,20 @@
  * If no LICENSE file comes with this software, it is provided AS-IS.
  */
 
-#ifndef I2C_REGISTER_TOOLKIT_APPLICATION_INCLUDE_TIM_H_
-#define I2C_REGISTER_TOOLKIT_APPLICATION_INCLUDE_TIM_H_
+#ifndef I2C_REGISTER_TOOLKIT_DRIVERS_BSP_INCLUDE_BSP_TIMER_DELAY_H_
+#define I2C_REGISTER_TOOLKIT_DRIVERS_BSP_INCLUDE_BSP_TIMER_DELAY_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "stm32f1xx_hal.h"
+#include "bsp_error.h"
 
-extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef *htim_delay5us;
 
-void TIM_Init(void);
-void Delay5us(void);
+void BSP_TIM_Delay5us_Init(void);
+void BSP_Delay5us(void);
 
 #ifdef __cplusplus
 }

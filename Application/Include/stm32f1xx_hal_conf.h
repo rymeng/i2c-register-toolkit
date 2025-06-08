@@ -132,7 +132,7 @@ extern "C" {
 #define USE_HAL_USART_REGISTER_CALLBACKS        (0U)
 #define USE_HAL_WWDG_REGISTER_CALLBACKS         (0U)
 
-#define USE_FULL_ASSERT                         (0U)
+#define USE_FULL_ASSERT
 
 #define USE_SPI_CRC                             (1U)
 
@@ -264,7 +264,7 @@ extern "C" {
   #include "stm32f1xx_hal_mmc.h"
 #endif
 
-#include "stm32f1xx_assert.h"
+#include "bsp_assert.h"
 
 #ifdef __cplusplus
 }
